@@ -36,24 +36,13 @@ button.addEventListener('click', function () {
     document.querySelector('.number').textContent = randomNumber;
     button.disabled = true;
     highscoreDisplayed.textContent = score;
-  } else if (guess > randomNumber) {
+  } else if (guess != randomNumber) {
     score--;
     if (score > 0) {
-      document.querySelector('.message').textContent = 'Too High. Guess Again.';
-
-      document.querySelector('.score').textContent = score;
-    } else if (score === 0) {
-      document.querySelector('.score').textContent = score;
       document.querySelector('.message').textContent =
-        'Play again, score reached zero.';
-      setTimeout(function () {
-        reset();
-      }, 10000);
-    }
-  } else if (guess < randomNumber) {
-    score--;
-    if (score > 0) {
-      document.querySelector('.message').textContent = 'Too Low. Guess Again.';
+        guess > randomNumber
+          ? 'Too high, guess again.'
+          : 'Too low, guess again.';
       document.querySelector('.score').textContent = score;
     } else if (score === 0) {
       document.querySelector('.score').textContent = score;
